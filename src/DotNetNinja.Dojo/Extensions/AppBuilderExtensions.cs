@@ -24,7 +24,11 @@ public static class AppBuilderExtensions
         if (!environment.IsProduction())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(options =>
+            {
+                options.DocumentTitle = "DotNet Ninja Dojo API";
+                options.InjectStylesheet("/Assets/css/Custom.Swagger.css");
+            });
         }
 
         app.UseReDoc(options =>

@@ -15,10 +15,11 @@ public class StartUp
     public void ConfigureServices(IServiceCollection services)
     {
         services
-                .AddAutoBoundConfiguration(Configuration, out var autoBound)
-                .AddControllers().Services
+                .AddAutoBoundConfiguration(Configuration, out var bound)
+                .AddControllers()
+                .AddApiContentFormatters()
                 .AddEndpointsApiExplorer()
-                .AddSwaggerGen();
+                .AddOpenApiGeneration();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -27,6 +28,7 @@ public class StartUp
             .UseHsts()
             .UseOpenApi(env)
             .UseHttpsRedirection()
+            .UseStaticFiles()
             .UseRouting()
             .UseAuthorization()
             .UseApplicationEndpoints();
