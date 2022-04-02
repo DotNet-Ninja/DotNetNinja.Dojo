@@ -141,7 +141,7 @@ public class PageTests
         const int pageNumber = 1;
         const int pageSize = 25;
         const int total = 12;
-        var entities = GenerateEntities(pageSize, 1);
+        var entities = GenerateEntities(pageSize);
 
         var page = new Page<Entity>(pageNumber, pageSize, total, entities);
 

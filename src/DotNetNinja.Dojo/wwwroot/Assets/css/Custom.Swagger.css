@@ -6,7 +6,7 @@
   background-attachment: fixed;
 }
 
-/*Photo via <a href="https://www.goodfreephotos.com/" > Good Free Photos</a >*/
+/* Photo via <a href="https://www.goodfreephotos.com/" > Good Free Photos</a > */
 
 .block {
   background: rgba(255, 255, 255, 0.7);
@@ -18,16 +18,11 @@
 }
 
 .swagger-ui .info {
-  margin: 12px!important;
+  margin: 12px !important;
 }
 
 .version-stamp {
-  background-color: #0066ff!important;
-}
-
-.swagger-ui .topbar .download-url-wrapper .select-label select {
-  border-color: #0066ff;
-  border-width: 1px;
+  background-color: #0066ff !important;
 }
 
 .swagger-ui .response-control-media-type--accept-controller select {
@@ -35,6 +30,10 @@
   border-width: 2px;
 }
 
+.swagger-ui .topbar .download-url-wrapper .select-label select {
+  border-color: #0066ff;
+  border-width: 1px;
+}
 
 .topbar {
   border-bottom: solid 3px #0066ff;

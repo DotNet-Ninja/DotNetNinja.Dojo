@@ -79,7 +79,7 @@ public class EntitiesController:ApiDataController
             return BadRequest(ModelState);
         }
 
-        var entities = await SortedProjection.Filter(filter).ToPageAsync(filter);
+        var entities = await SortedProjection.ApplyFilter(filter).ToPageAsync(filter);
         if (!entities.Items.Any())
         {
             return NotFound();

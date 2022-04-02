@@ -4,7 +4,7 @@ namespace DotNetNinja.Dojo.Extensions;
 
 public static class QueryExtensions
 {
-    public static IQueryable<T> Filter<T>(this IQueryable<T> data, IFilter<T> filter) where T : class
+    public static IQueryable<T> ApplyFilter<T>(this IQueryable<T> data, IFilter<T> filter) where T : class
     {
         return filter.Filter(data);
     }

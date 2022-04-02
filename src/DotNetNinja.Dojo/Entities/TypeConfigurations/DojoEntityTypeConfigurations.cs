@@ -8,7 +8,7 @@ public class DojoEntityTypeConfigurations: IEntityTypeConfiguration<DojoEntity>
     public void Configure(EntityTypeBuilder<DojoEntity> builder)
     {
         builder.ToTable("Entities");
-        builder.HasKey(e=> new {e.Kind, e.Name}).IsClustered(); //.HasName("PK_Entities");
+        builder.HasKey(e=> new {e.Kind, e.Name}).IsClustered();
         builder.Property(e => e.Kind).IsRequired().HasMaxLength(64);
         builder.Property(e => e.Name).IsRequired().HasMaxLength(128);
         builder.Property(e => e.Description).HasMaxLength(256);

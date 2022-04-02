@@ -32,7 +32,7 @@ public class SqlDbMigrator: IDbMigrator
             {
                 var entities = new List<DojoEntity>
                 {
-                    new DojoEntity()
+                    new DojoEntity
                     {
                         Kind = "Component",
                         Name = "Dojo-UI",
@@ -49,7 +49,7 @@ public class SqlDbMigrator: IDbMigrator
                             new Tag{Name = "Blazor"}
                         }
                     },
-                    new DojoEntity()
+                    new DojoEntity
                     {
                         Kind = "Component",
                         Name = "Dojo-Api",
