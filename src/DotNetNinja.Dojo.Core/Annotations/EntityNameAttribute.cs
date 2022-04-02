@@ -8,7 +8,7 @@ namespace DotNetNinja.Dojo.Annotations;
 /// </summary>
 public class EntityNameAttribute: ValidationAttribute
 {
-    public const string ValidationExpression = @"^[a-zA-Z]{1,}[a-zA-Z0-9\-\.\:\/]{0,}[a-zA-Z0-9]{1,}$";
+    public static readonly string ValidationExpression = @"^[a-zA-Z]{1,}[a-zA-Z0-9\-\.\:\/]{0,}[a-zA-Z0-9]{1,}$";
 
     public override bool RequiresValidationContext => false;
 
@@ -19,7 +19,10 @@ public class EntityNameAttribute: ValidationAttribute
 
     protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
-        if(IsValid(value)) return ValidationResult.Success;
+        if (IsValid(value))
+        {
+            return ValidationResult.Success;
+        }
         var message = FormatErrorMessage(validationContext.DisplayName);
         return new ValidationResult(message);
     }

@@ -9,7 +9,10 @@ public abstract class Page
     {
         get
         {
-            if (Size == 0) return 0;
+            if (Size == 0)
+            {
+                return 0;
+            }
             return TotalItemCount % Size == 0 ? TotalItemCount / Size : TotalItemCount / Size + 1;
         }
     }

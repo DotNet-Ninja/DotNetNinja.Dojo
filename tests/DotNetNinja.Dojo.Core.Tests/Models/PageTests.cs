@@ -102,7 +102,7 @@ public class PageTests
         const int pageNumber = 1;
         const int pageSize = 25;
         const int total = 100;
-        var entities = GenerateEntities(pageSize, 1);
+        var entities = GenerateEntities(pageSize);
 
         var page = new Page<Entity>(pageNumber, pageSize, total, entities);
 
@@ -200,7 +200,7 @@ public class PageTests
         page.PreviousPage.Should().Be(pageNumber);
     }
 
-    private List<Entity> GenerateEntities(int qty, int start=1)
+    private List<Entity> GenerateEntities(int qty, int start = 1)
     {
         var entities = 
         Enumerable.Range(start, qty).Select(id => new Entity

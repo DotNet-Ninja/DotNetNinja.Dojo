@@ -1,42 +1,41 @@
 ﻿body {
-    background-image: url("/Assets/images/mount-fuji.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url("/Assets/images/mount-fuji.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /*Photo via <a href="https://www.goodfreephotos.com/" > Good Free Photos</a >*/
 
 .block {
-    background: rgba(255, 255, 255, 0.7);
-    padding: 8px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    /*border-radius: 3px;*/
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-top: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
 }
 
 .swagger-ui .info {
-    margin: 12px!important;
+  margin: 12px!important;
 }
 
 .version-stamp {
-    background-color: #0066ff!important;
+  background-color: #0066ff!important;
 }
 
 .swagger-ui .topbar .download-url-wrapper .select-label select {
-    border-color: #0066ff;
-    border-width: 1px;
+  border-color: #0066ff;
+  border-width: 1px;
 }
 
 .swagger-ui .response-control-media-type--accept-controller select {
-    border-color: #0066ff;
-    border-width: 2px;
+  border-color: #0066ff;
+  border-width: 2px;
 }
 
 
 .topbar {
-    border-bottom: solid 3px #0066ff;
+  border-bottom: solid 3px #0066ff;
 }

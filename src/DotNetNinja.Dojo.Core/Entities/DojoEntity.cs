@@ -1,8 +1,10 @@
-﻿namespace DotNetNinja.Dojo.Entities;
+﻿using System.Globalization;
+
+namespace DotNetNinja.Dojo.Entities;
 
 public class DojoEntity
 {
-    public string Id => $"{Kind.ToLower()}|{Name.ToLower()}";
+    public string Id => $"{Kind.ToLowerInvariant()}|{Name.ToLowerInvariant()}";
     public string Kind { get; set; } = string.Empty;
     public string Name { get; set; } = string.Empty;
     public string? Description { get; set; }

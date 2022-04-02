@@ -4,6 +4,11 @@ root = true
 [*]
 indent_style = space
 
+# Css files
+[*.css]
+indent_size = 2
+tab_width = 2
+
 # Xml files
 [*.xml]
 indent_size = 2
