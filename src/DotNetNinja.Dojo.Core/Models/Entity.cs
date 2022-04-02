@@ -5,7 +5,7 @@ namespace DotNetNinja.Dojo.Models;
 public class Entity
 {
     public string ApiVersion => Constants.ApiVersion.V1;
-    public string Id => $"{Kind.ToLower()}|{MetaData.Name.ToLower()}";
+    public string Id => $"{Kind.ToLowerInvariant()}|{MetaData.Name.ToLowerInvariant()}";
 
     [EntityName]
     public string Kind { get; set; } = string.Empty;
