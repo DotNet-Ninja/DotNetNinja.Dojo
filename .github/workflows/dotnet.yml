@@ -23,3 +23,5 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --collect:"XPlat Code Coverage" --no-build --verbosity normal
+    - name: Publish Coverage
+      run: curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov && ./codecov
