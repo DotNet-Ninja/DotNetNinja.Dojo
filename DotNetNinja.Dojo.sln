@@ -1,27 +1,24 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30114.105
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{84297DAD-423B-41F8-A0CC-D94BFF8C77EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Dojo", "src\DotNetNinja.Dojo\DotNetNinja.Dojo.csproj", "{DB622404-DBD4-42B1-B9FE-698CC1B47F22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetNinja.Dojo", "src\DotNetNinja.Dojo\DotNetNinja.Dojo.csproj", "{DB622404-DBD4-42B1-B9FE-698CC1B47F22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Dojo.Core", "src\DotNetNinja.Dojo.Core\DotNetNinja.Dojo.Core.csproj", "{BEC947E4-51CD-45A4-8DC2-92C00C1E26B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetNinja.Dojo.Core", "src\DotNetNinja.Dojo.Core\DotNetNinja.Dojo.Core.csproj", "{BEC947E4-51CD-45A4-8DC2-92C00C1E26B8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{12788302-B64E-46D7-8388-0432B92926B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Dojo.Core.Tests", "tests\DotNetNinja.Dojo.Core.Tests\DotNetNinja.Dojo.Core.Tests.csproj", "{B1676F3C-F2F2-441E-9372-6D54B44A97D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetNinja.Dojo.Core.Tests", "tests\DotNetNinja.Dojo.Core.Tests\DotNetNinja.Dojo.Core.Tests.csproj", "{B1676F3C-F2F2-441E-9372-6D54B44A97D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetNinja.Dojo.Tests", "tests\DotNetNinja.Dojo.Tests\DotNetNinja.Dojo.Tests.csproj", "{14DE46BA-14C9-4DE8-A4B6-66E16A8CD353}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetNinja.Dojo.Tests", "tests\DotNetNinja.Dojo.Tests\DotNetNinja.Dojo.Tests.csproj", "{14DE46BA-14C9-4DE8-A4B6-66E16A8CD353}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{DB622404-DBD4-42B1-B9FE-698CC1B47F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -41,10 +38,16 @@ Global
 		{14DE46BA-14C9-4DE8-A4B6-66E16A8CD353}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14DE46BA-14C9-4DE8-A4B6-66E16A8CD353}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DB622404-DBD4-42B1-B9FE-698CC1B47F22} = {84297DAD-423B-41F8-A0CC-D94BFF8C77EA}
 		{BEC947E4-51CD-45A4-8DC2-92C00C1E26B8} = {84297DAD-423B-41F8-A0CC-D94BFF8C77EA}
 		{B1676F3C-F2F2-441E-9372-6D54B44A97D9} = {12788302-B64E-46D7-8388-0432B92926B3}
 		{14DE46BA-14C9-4DE8-A4B6-66E16A8CD353} = {12788302-B64E-46D7-8388-0432B92926B3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD313BC3-4BEA-4DD8-9D5F-AA55FD595074}
 	EndGlobalSection
 EndGlobal

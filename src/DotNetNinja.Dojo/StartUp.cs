@@ -1,5 +1,7 @@
-﻿using DotNetNinja.AutoBoundConfiguration;
+﻿using DotNetNinja.Dojo.Entities;
+using DotNetNinja.Dojo.Entities.Migrations;
 using DotNetNinja.Dojo.Extensions;
+using DotNetNinja.Dojo.Models;
 
 namespace DotNetNinja.Dojo;
 
@@ -16,13 +18,17 @@ public class StartUp
     {
         services
                 .AddAutoBoundConfiguration(Configuration, out var bound)
+                .AddAutoMapper(typeof(Entity).Assembly)
+                .AddDataContext<DojoContext>(bound)
+                .AddApplicationServices()
+                .AddApplicationHealthChecks(bound)
                 .AddControllers()
                 .AddApiContentFormatters()
                 .AddEndpointsApiExplorer()
                 .AddOpenApiGeneration();
     }
 
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbMigrator migrations)
     {
         app
             .UseHsts()
@@ -32,5 +38,7 @@ public class StartUp
             .UseRouting()
             .UseAuthorization()
             .UseApplicationEndpoints();
+
+        migrations.Migrate().SeedDatabase();
     }
 }

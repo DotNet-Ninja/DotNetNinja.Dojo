@@ -1,0 +1,8 @@
+﻿-- Add Migration
+dotnet ef migrations add <NAME> -c DojoContext -o Entities\Migrations
+
+-- Remove latest Migration
+dotnet ef migrations remove
+
+-- Update tools
+dotnet tool update --global dotnet-ef

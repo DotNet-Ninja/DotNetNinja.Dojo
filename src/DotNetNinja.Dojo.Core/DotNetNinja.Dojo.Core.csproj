@@ -7,4 +7,15 @@
     <RootNamespace>DotNetNinja.Dojo</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Annotations\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
+  </ItemGroup>
+
 </Project>

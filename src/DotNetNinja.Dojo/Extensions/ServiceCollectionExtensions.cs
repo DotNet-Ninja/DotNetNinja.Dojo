@@ -1,11 +1,23 @@
-﻿using DotNetNinja.AutoBoundConfiguration;
+﻿using System.Reflection;
 
+using DotNetNinja.AutoBoundConfiguration;
+using DotNetNinja.Dojo.Configuration;
+using DotNetNinja.Dojo.Entities.Migrations;
+
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 
 namespace DotNetNinja.Dojo.Extensions;
 
 public static class ServiceCollectionExtensions
 {
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+    {
+        return services
+                .AddScoped<IDbMigrator, SqlDbMigrator>();
+    }
+
     public static IServiceCollection AddAutoBoundConfiguration(this IServiceCollection services,
         IConfiguration configuration,
         out IAutoBoundConfigurationProvider provider)
@@ -37,6 +49,48 @@ public static class ServiceCollectionExtensions
                 },
                 TermsOfService = new Uri("https://github.com/DotNet-Ninja/DotNetNinja.Dojo/")
             });
+
+            var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
         });
+    }
+
+    public static IServiceCollection AddDataContext<TContext>(this IServiceCollection services,
+        IAutoBoundConfigurationProvider provider, string? connectionName = null) where TContext : DbContext
+    {
+        if (string.IsNullOrWhiteSpace(connectionName))
+        {
+            connectionName = typeof(TContext).Name;
+        }
+        var settings = provider.Get<DbSettings>();
+        var config = settings.Contexts[connectionName];
+        return services.AddDbContext<TContext>(options => options.UseSqlServer(config.ConnectionString));
+    }
+
+    public static IServiceCollection AddApplicationHealthChecks(this IServiceCollection services, 
+        IAutoBoundConfigurationProvider provider)
+    {
+        // Add Sql Checks
+        var settings = provider.Get<DbSettings>();
+        var builder = services.AddHealthChecks();
+        foreach (var key in settings.Contexts.Keys)
+        {
+            var db = settings.Contexts[key];
+            if (db.Type == DbType.SqlServer)
+            {
+                builder.AddSqlServer(db.ConnectionString, 
+                    "SELECT 1", 
+                    db.Name, 
+                    HealthStatus.Unhealthy, 
+                    new[]
+                    {
+                        "Database",
+                        "SqlServer"
+                    }, 
+                    TimeSpan.FromSeconds(3));
+            }
+        }
+
+        return builder.Services;
     }
 }

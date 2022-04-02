@@ -1,4 +1,11 @@
-﻿namespace DotNetNinja.Dojo.Extensions;
+﻿using System.Net;
+
+using HealthChecks.UI.Client;
+
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+
+namespace DotNetNinja.Dojo.Extensions;
 
 public static class AppBuilderExtensions
 {
@@ -15,6 +22,31 @@ public static class AppBuilderExtensions
     {
         return app.UseEndpoints(endpoints =>
         {
+            endpoints.MapHealthChecks("/Liveliness", new HealthCheckOptions
+            {
+                Predicate = _ => false,
+                ResultStatusCodes = new Dictionary<HealthStatus, int>
+                {
+                    {
+                        HealthStatus.Degraded, (int)HttpStatusCode.OK
+                    },
+                    {
+                        HealthStatus.Healthy, (int)HttpStatusCode.OK
+                    },
+                    {
+                        HealthStatus.Unhealthy, (int)HttpStatusCode.ServiceUnavailable
+                    },
+                }
+            });
+            endpoints.MapHealthChecks("/Health/Databases", new HealthCheckOptions
+            {
+                Predicate = (item) => item.Tags.Contains("Database"),
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+            endpoints.MapHealthChecks("/Health", new HealthCheckOptions
+            {
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
             endpoints.MapControllers();
         });
     }

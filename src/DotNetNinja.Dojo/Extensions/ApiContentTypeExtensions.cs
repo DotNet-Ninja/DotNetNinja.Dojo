@@ -35,7 +35,8 @@ public static class ApiContentTypeExtensions
 
     public static IServiceCollection AddApiContentFormatters(this IMvcBuilder mvc)
     {
-        return mvc.AddJsonFormatOptions()
+        return mvc
+            .AddJsonFormatOptions()
             .AddYamlApiSupport()
             .AddXmlApiSupport().Services;
     }
