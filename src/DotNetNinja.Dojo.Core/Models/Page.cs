@@ -17,10 +17,10 @@ public abstract class Page
     public bool CanGoForward => Number < Count;
     public bool CanGoBack => Number > 1;
 
-    public bool HasMultiplePages => CanGoBack || CanGoForward;
+    public bool HasMultiplePages => Number > 1;
 
     public int NextPage => (CanGoForward) ? Number + 1 : Number;
-    public int PrevPage => (CanGoBack) ? Number - 1 : Number;
+    public int PreviousPage => (CanGoBack) ? Number - 1 : Number;
 }
 
 public class Page<T> : Page where T : class
@@ -37,15 +37,4 @@ public class Page<T> : Page where T : class
         Items = items;
     }
     public List<T> Items { get; set; } = new();
-
-    public Page<TTarget> Map<TSource, TTarget>(Func<T, TTarget> mapper) where TTarget : class, new()
-    {
-        return new Page<TTarget>()
-        {
-            Items = Items.Select(mapper).ToList(),
-            Number = Number,
-            Size = Size,
-            TotalItemCount = TotalItemCount
-        };
-    }
 }
